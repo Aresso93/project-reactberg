@@ -26,7 +26,7 @@ export function BookSimpleCard(props: SimpleCardProps) {
         <Typography gutterBottom variant="h5" component="div">
           {props.title}
         </Typography>
-        <div>{props.authors}</div>
+        {/* <div>{props.authors}</div> */}
       </CardContent>
       <CardActions>
         <Button size="small">Share</Button>
