@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import "./App.css";
 import { useGutendexApi } from "./hooks/gutendex-api";
+import { BookList } from "./components/books-list";
 
 const lightThemeOptions: ThemeOptions = {
   palette: {
@@ -21,7 +22,7 @@ const lightThemeOptions: ThemeOptions = {
     },
     background: {
       default: "#ececec",
-      paper: "#F28345",
+      paper: "#ffffff",
     },
   },
 };
@@ -47,13 +48,13 @@ function App() {
   let darkTheme = createTheme(darkThemeOptions);
   const [light, setLight] = useState(true);
   const gutendex = useGutendexApi();
-  // useEffect(() => {
-  //   gutendex.actions.getBooks();
-  // });
+  useEffect(() => {
+    gutendex.actions.getBooks();
+  }, []);
   return (
     <>
       <ThemeProvider theme={light ? lightTheme : darkTheme}>
-        <button
+        {/* <button
           color="secondary"
           onClick={() => {
             setLight((prev) => !prev);
@@ -61,7 +62,8 @@ function App() {
           }}
         >
           AAAAAAAAAAAAAAA
-        </button>
+        </button> */}
+        <BookList books={gutendex.states.books}></BookList>
       </ThemeProvider>
     </>
   );
